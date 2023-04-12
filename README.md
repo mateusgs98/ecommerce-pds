@@ -35,6 +35,15 @@ A ideia é construir um sistema que sugira esquemas vacinais de acordo com dados
 ## Backlog do Sprint:
 - **História 1:** Como usuário, eu gostaria de efetuar login no sistema.
   - **Descrição:** Para entrar no sistema, é necessário primeiro efetuar o login. Os campos a serem preenchidos são: email e senha. Ao concluir o login, o usuário deve ser redirecionado para a página inicial da aplicação, que será diferente dependendo do tipo do usuário (médico ou paciente).
+  - Tarefas e responsáveis:
+    - Criar tabelas no banco de dados
+    - Configurações básicas do projeto no Nextjs
+    - Configurações básicas do projeto no C#
+    - Criar componentes básicos da tela
+    - Criar a tela de login segundo layout definido e consumindo o endpoint de login
+    - Criar o endpoint para realizar o login
+    - Configurar a autenticação do usuário após efetuar o login
+
 - **História 2:** Como usuário, gostaria de efetuar meu cadastro no sistema
   - **Descrição:** Para utilizar o sistema, é necessário primeiro efetuar o cadastro do usuário. Os campos a serem preenchidos são: Nome completo, email, data de nascimento, senha, confirmar senha, checkbox para médico ou paciente, aceito os termos de uso. Após concluir o cadastro, o usuário deve ter seu login efetuado automaticamente e deve ser redirecionado para a página inicial da aplicação.
 - **História 3:** Como profissional da saúde, eu quero fazer o cadastro e atualização de doenças.
