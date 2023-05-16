@@ -4,6 +4,7 @@ import "../../styles/globals.css";
 import Header from '../components/Header/index';
 import { Footer } from '../components/Footer/style';
 import { Content } from '../components/Content/style';
+import { SessionProvider } from "next-auth/react"
 
 function App({ Component, pageProps }) {
   const extraPages = ['login', 'register'];
@@ -32,7 +33,9 @@ function App({ Component, pageProps }) {
 
   return (
     <>
-      {getPage()}
+      <SessionProvider session={pageProps.session}>
+        {getPage()}
+      </SessionProvider>
     </>
   );
 }
