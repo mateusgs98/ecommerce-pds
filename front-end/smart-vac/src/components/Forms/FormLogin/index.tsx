@@ -1,6 +1,6 @@
 import { Input } from "@/components/FormElements/Input";
 import { FormContainer } from "@/components/Forms/FormLogin/styles";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { Button } from "react-bootstrap";
 import * as Yup from 'yup';
 
@@ -30,10 +30,10 @@ export default function FormLogin(props: FormLoginProps) {
                     <Form>
                         <FormContainer>
                             <h2>Login</h2>
-                            <Input name="email" />
-                            <Input name="password" type="password" />
+                            <Input name="email" label="E-mail" />
+                            <Input name="password" type="password" label="Senha" />
                             <div className="extra">
-                                <a href="/create-account">Criar Conta</a>
+                                <a href="/register">Criar Conta</a>
                                 <Button variant="default" type="submit" disabled={isSubmitting}>
                                     Entrar
                                 </Button>

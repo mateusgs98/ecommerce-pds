@@ -5,14 +5,15 @@ import { Footer } from '../Footer/style';
 
 interface ExternalPageProps {
     children: React.ReactNode;
+    width?: string;
 }
 
-export default function ExternalPageLayout({ children }: ExternalPageProps) {
+export default function ExternalPageLayout({ children, width }: ExternalPageProps) {
 
     return (
         <>
             <HeaderLogin />
-            <Container>
+            <Container width={width}>
                 {children}
             </Container>
             <Footer />

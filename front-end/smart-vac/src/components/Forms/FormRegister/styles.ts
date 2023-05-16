@@ -21,22 +21,7 @@ export const FormContainer = styled.div`
     }
 
     button {
-        width: 200px;
-        min-width: 40%;
+        width: 40%;
         padding: 10px 0rem;
-    }
-
-    .custom-row {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-
-    .align-right {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
     }
 `;

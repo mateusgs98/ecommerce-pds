@@ -9,9 +9,9 @@ background-color: #3D405B;
     z-index: -1;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{width?: string}>`
     width: 90%;
-    max-width: 560px;
+    max-width: ${props => props.width ? props.width : '560px'};
     margin: auto;
     padding: 20px;
     margin-top: -3rem;
