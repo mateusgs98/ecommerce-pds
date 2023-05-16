@@ -20,27 +20,29 @@ export default function FormLogin(props: FormLoginProps) {
     });
 
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={props.onSubmit}
-        >
-            {({ isSubmitting }) => (
-                <Form>
-                    <FormContainer>
-                        <Input name="email" />
-                        <Input name="password" type="password" />
-                        <div className="extra">
-                            <a href="/create-account">Criar Conta</a>
-                            <Button variant="default" type="submit" disabled={isSubmitting}>
-                                Entrar
-                            </Button>
-                        </div>
-                    </FormContainer>
-
-                </Form>
-            )}
-        </Formik>
+        <>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={props.onSubmit}
+            >
+                {({ isSubmitting }) => (
+                    <Form>
+                        <FormContainer>
+                            <h2>Login</h2>
+                            <Input name="email" />
+                            <Input name="password" type="password" />
+                            <div className="extra">
+                                <a href="/create-account">Criar Conta</a>
+                                <Button variant="default" type="submit" disabled={isSubmitting}>
+                                    Entrar
+                                </Button>
+                            </div>
+                        </FormContainer>
+                    </Form>
+                )}
+            </Formik >
+        </>
     );
 
 }

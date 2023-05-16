@@ -21,7 +21,6 @@ export default function Login() {
   return (
     <>
       <ExternalPageLayout>
-        <h2>Login</h2>
         <FormLogin onSubmit={handleLogin} />
       </ExternalPageLayout>
     </>
