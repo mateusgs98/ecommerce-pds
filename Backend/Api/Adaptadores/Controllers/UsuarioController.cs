@@ -15,16 +15,30 @@ namespace Api.Adaptadores.Controllers
             _repositorioUsuario = repositorioUsuario ?? throw new ArgumentNullException(nameof(repositorioUsuario));
         }
 
-        [HttpGet("obter/{id}")]
-        public async Task<Usuario> ObterUsuario([FromRoute]int id)
+        [HttpPost("login")]
+        public async Task<IResult> Login([FromBody]Usuario usuario)
         {
-            return await _repositorioUsuario.ObterUsuario(id);
+            var idUsuarioEncontrado = await _repositorioUsuario.ObterUsuario(usuario.Email, usuario.Senha);
+            if (idUsuarioEncontrado == 0)
+                return Results.Unauthorized();
+
+            return Results.Ok(idUsuarioEncontrado);
+        }
+
+        [HttpGet("obter/{id}")]
+        public async Task<IResult> ObterUsuario([FromRoute]int id)
+        {
+            var usuario = await _repositorioUsuario.ObterUsuario(id);
+
+            return Results.Ok(usuario);
         }
 
         [HttpPost("cadastrar")]
-        public async Task<Usuario> CadastrarUsuario([FromBody]Usuario usuario)
+        public async Task<IResult> CadastrarUsuario([FromBody]Usuario usuario)
         {
-            return await _repositorioUsuario.CadastrarUsuario(usuario);
+            var usuarioCadastrado = await _repositorioUsuario.CadastrarUsuario(usuario);
+
+            return Results.Ok(usuarioCadastrado);
         }
     }
 }
