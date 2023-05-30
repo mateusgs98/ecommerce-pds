@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, FieldAttributes, FieldInputProps } from "formik";
+import { ErrorMessage, Field, FieldAttributes } from "formik";
 import { InputContainer } from "./style";
 
 interface InputProps extends FieldAttributes<any> {

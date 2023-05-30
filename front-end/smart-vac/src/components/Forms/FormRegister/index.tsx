@@ -10,13 +10,23 @@ interface FormRegisterProps {
 
 export default function FormRegister(props: FormRegisterProps) {
     const initialValues = {
+        name: '',
         email: '',
         password: '',
+        confirmPassword: '',
+        birthdate: '',
+        terms: false,
+        amDoctor: false
     };
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Digite um e-mail válido').required('Campo obrigatório'),
         password: Yup.string().required('Campo obrigatório'),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'), undefined], 'As senhas devem ser iguais').required('Campo obrigatório'),
+        name: Yup.string().required('Campo obrigatório'),
+        birthdate: Yup.string().required('Campo obrigatório'),
+        terms: Yup.boolean().oneOf([true], 'Você deve aceitar os termos para continuar').required('Campo obrigatório'),
+        amDoctor: Yup.boolean().required('Campo obrigatório'),
     });
 
     return (
@@ -42,11 +52,11 @@ export default function FormRegister(props: FormRegisterProps) {
                             <div className="custom-row">
                                 <Input name="terms" type="checkbox" label="Concordo com os termos" />
                                 <Input name="amDoctor" type="checkbox" label="Sou médico" />
-                                <div className="align-right">
-                                    <Button variant="default" type="submit" disabled={isSubmitting}>
-                                        Entrar
-                                    </Button>
-                                </div>
+                            </div>
+                            <div className="align-right">
+                                <Button variant="default" type="submit" disabled={isSubmitting}>
+                                    Criar Conta
+                                </Button>
                             </div>
                         </FormContainer>
                     </Form>
