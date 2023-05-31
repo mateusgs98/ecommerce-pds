@@ -18,7 +18,6 @@ interface Doses {
 }
 
 const columnsTable = [
-  { dataField: 'id', text: 'ID' },
   { dataField: 'Vacina', text: 'Vacina' },
   { dataField: 'DoencasEvitadas', text: 'Doencas Evitadas' },
   { dataField: '', text: 'Período Entre Doses (Dias)' },
