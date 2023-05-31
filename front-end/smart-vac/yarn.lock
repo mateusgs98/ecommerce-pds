@@ -1284,12 +1284,19 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-bootstrap-table-next@^4.0.19":
+"@types/react-bootstrap-table-next@*", "@types/react-bootstrap-table-next@^4.0.19":
   version "4.0.19"
   resolved "https://registry.yarnpkg.com/@types/react-bootstrap-table-next/-/react-bootstrap-table-next-4.0.19.tgz#417169a1d2f03c9ed9dbb1f983e9ed9796fef206"
   integrity sha512-jlgV+i1WMn/Bfc5bdCbaNHhpa7VI3nVc2ayrPfgoJ41mA5dO/C0ZzhHSs7vUI9WKf/e1aBD1uA3b7673LYL1eQ==
   dependencies:
     "@types/react" "*"
+
+"@types/react-bootstrap-table2-paginator@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-bootstrap-table2-paginator/-/react-bootstrap-table2-paginator-2.1.2.tgz#bf40a045579c6b7ffce8a5b1120d892feb50c362"
+  integrity sha512-qAeUhtQ+wXKUC72emRBh1CQw+usGE/sXa1Xp0nEby7xZotpoJJ3iL3yAstRvYGn7TKlKuSTRRNtDEd6zP+XuqA==
+  dependencies:
+    "@types/react-bootstrap-table-next" "*"
 
 "@types/react-dom@18.2.4":
   version "18.2.4"
@@ -3382,6 +3389,11 @@ react-bootstrap-table-next@^4.0.3:
     classnames "^2.2.5"
     react-transition-group "^4.2.0"
     underscore "1.9.1"
+
+react-bootstrap-table2-paginator@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-table2-paginator/-/react-bootstrap-table2-paginator-2.1.2.tgz#a62151909e594719db568cede6e5d2962cbf8ddb"
+  integrity sha512-LC5znEphhgKJvaSY1q8d+Gj0Nc/1X+VS3tKJjkmWmfv9P61YC/BnwJ+aoqEmQzsLiVGowrzss+i/u+Tip5H+Iw==
 
 react-bootstrap@^2.7.4:
   version "2.7.4"

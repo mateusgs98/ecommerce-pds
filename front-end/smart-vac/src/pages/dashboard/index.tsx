@@ -1,8 +1,10 @@
 import { api } from "@/Lib/api";
+import Table from "@/components/Table";
 import { CheckboxContainer, DashboardContainer } from "@/helpers/pages/dashboard/style";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 interface Vacina {
   vacina: string;
@@ -134,7 +136,7 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <BootstrapTable keyField='vacina' data={data} columns={columnsTable} striped />
+        <Table keyField='vacina' data={data} columns={columnsTable} />
       </div>
 
     </DashboardContainer>

@@ -9,6 +9,7 @@ export const DashboardContainer = styled.div`
 export const CheckboxContainer = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
 
