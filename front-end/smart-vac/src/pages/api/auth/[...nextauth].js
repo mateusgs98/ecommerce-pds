@@ -9,7 +9,11 @@ export default NextAuth({
       name: 'Credentials',
       async authorize(credentials) {
         try {
-          // const user = await api.post('/usuario/login', credentials)
+          const body = {
+            Email: credentials.email,
+            Senha: credentials.password
+          }
+          // const user = await api.post('/usuario/login', body)
           const user = { Id: "1", Nome: "J Smith", Email: "jsmith@example.com", Paciente: false, DataNascimento: '2002-01-01' }
           if (user) {
             return Promise.resolve(user);
