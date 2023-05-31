@@ -1,6 +1,4 @@
 import { api } from "@/Lib/api";
-import { Input } from "@/components/FormElements/Input";
-import { InputContainer } from "@/components/FormElements/Input/style";
 import { CheckboxContainer, DashboardContainer } from "@/helpers/pages/dashboard/style";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -136,7 +134,7 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <BootstrapTable keyField='Vacina' data={data} columns={columnsTable} striped />
+        <BootstrapTable keyField='vacina' data={data} columns={columnsTable} striped />
       </div>
 
     </DashboardContainer>
