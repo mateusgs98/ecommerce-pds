@@ -32,6 +32,10 @@ export const FormContainer = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         gap: 30px;
+
+        div {
+            min-width: 200px;
+        }
     }
 
     .align-right {

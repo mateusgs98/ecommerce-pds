@@ -1,32 +1,32 @@
 import { Input } from "@/components/FormElements/Input";
 import { FormContainer } from "@/components/Forms/FormLogin/styles";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import { Button } from "react-bootstrap";
 import * as Yup from 'yup';
 
 interface FormRegisterProps {
-    onSubmit: (data: object) => void;
+    onSubmit: (data: object, formik: FormikHelpers<any>) => void;
 }
 
 export default function FormRegister(props: FormRegisterProps) {
     const initialValues = {
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        birthdate: '',
+        Nome: '',
+        Email: '',
+        Senha: '',
+        ConfirmarSenha: '',
+        Aniversario: '',
         terms: false,
-        amDoctor: false
+        Medico: false
     };
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().email('Digite um e-mail válido').required('Campo obrigatório'),
-        password: Yup.string().required('Campo obrigatório'),
-        confirmPassword: Yup.string().oneOf([Yup.ref('password'), undefined], 'As senhas devem ser iguais').required('Campo obrigatório'),
-        name: Yup.string().required('Campo obrigatório'),
-        birthdate: Yup.string().required('Campo obrigatório'),
+        Email: Yup.string().email('Digite um e-mail válido').required('Campo obrigatório'),
+        Senha: Yup.string().required('Campo obrigatório'),
+        ConfirmarSenha: Yup.string().oneOf([Yup.ref('Senha'), undefined], 'As senhas devem ser iguais').required('Campo obrigatório'),
+        Nome: Yup.string().required('Campo obrigatório'),
+        Aniversario: Yup.string().required('Campo obrigatório'),
         terms: Yup.boolean().oneOf([true], 'Você deve aceitar os termos para continuar').required('Campo obrigatório'),
-        amDoctor: Yup.boolean().required('Campo obrigatório'),
+        Medico: Yup.boolean().required('Campo obrigatório'),
     });
 
     return (
@@ -41,17 +41,17 @@ export default function FormRegister(props: FormRegisterProps) {
                         <FormContainer>
                             <h2>Criar Conta</h2>
                             <div className="custom-row">
-                                <Input name="name" label="Nome Completo" />
-                                <Input name="email" label="E-mail" />
-                                <Input name="birthdate" type="date" label="Data de Nascimento" />
+                                <Input name="Nome" label="Nome Completo" />
+                                <Input name="Email" label="E-mail" />
+                                <Input name="Aniversario" type="date" label="Data de Nascimento" />
                             </div>
                             <div className="custom-row">
-                                <Input name="password" type="password" label="Senha" />
-                                <Input name="confirmPassword" type="password" label="Confirmar Senha" />
+                                <Input name="Senha" type="Senha" label="Senha" />
+                                <Input name="ConfirmarSenha" type="Senha" label="Confirmar Senha" />
                             </div>
                             <div className="custom-row">
                                 <Input name="terms" type="checkbox" label="Concordo com os termos" />
-                                <Input name="amDoctor" type="checkbox" label="Sou médico" />
+                                <Input name="Medico" type="checkbox" label="Sou médico" />
                             </div>
                             <div className="align-right">
                                 <Button variant="default" type="submit" disabled={isSubmitting}>

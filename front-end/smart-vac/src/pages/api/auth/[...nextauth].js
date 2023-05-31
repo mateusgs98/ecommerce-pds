@@ -7,48 +7,39 @@ export default NextAuth({
   providers: [
     CredentialsProvider({
       name: 'Credentials',
-      credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-        password: { label: 'Password', type: 'password' },
-      },
       async authorize(credentials) {
         try {
           // const user = await api.post('/usuario/login', credentials)
-          const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+          const user = { id: "1", name: "J Smith", email: "jsmith@example.com", amDoctor: true }
           if (user) {
-            return user;
+            return Promise.resolve(user);
           }
-          return null;
+          return Promise.resolve(null);
         } catch (error) {
-          return null;
+          return Promise.resolve(null);
         }
       }
     })
   ],
   callbacks: {
-    async jwt(token, user, account, profile, isNewUser) {
+    async jwt({ token, user }) { 
+      if(user) {
+        token.user = user;
+      }
       return token
     },
-    async session(session, token) {
+    async session({ session, token}) {
+      session.user = token.user;
       return session
     }
-  },
-  pages: {
-    signIn: '/login',
-    signOut: '/logout',
-    error: '/login',  
-    verifyRequest: '/login',
-    newUser: '/register'
-  },
-  jwt: {
-    secret: 'SEU_SECRET',
-    verificationOptions: {
-      algorithms: ['HS256']
-    },
+
   },
   session: {
     jwt: true,
-    maxAge: 24 * 60 * 60,
-    updateAge: 24 * 60 * 60,
+    maxAge: 60 * 60 // 1 hour
   },
+  jwt: {
+    secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
+    encryption: true
+  }
 })

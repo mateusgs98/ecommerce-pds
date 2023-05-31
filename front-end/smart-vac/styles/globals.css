@@ -24,20 +24,23 @@ h6 {
 }
 
 .btn-default {
-    background-color: #E07A5F;
-    color: #F4F1DE;
+    background-color: #E07A5F !important;
+    color: #F4F1DE !important;
+
 }
 
 .btn-default:hover,
-btn-default:active,
-btn-default:focus {
-    background-color: #E07A5F;
-    filter: brightness(1.2);
-    color: #F4F1DE;
+.btn-default:active,
+.btn-default:focus {
+    background-color: #E07A5F !important;
+    filter: brightness(1.2) !important;
+    color: #F4F1DE !important;
+    border: none;
 }
 
 .btn-default:disabled {
-    background-color: #E07A5F;
-    opacity: 0.5;
-    color: #F4F1DE;
+    background-color: #E07A5F !important;
+    opacity: 0.5 !important;
+    color: #F4F1DE !important;
+    border: none !important;
 }

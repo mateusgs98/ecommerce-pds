@@ -43,7 +43,6 @@ function App({ Component, pageProps }) {
 
 App.getInitialProps = async ({ Component, ctx }) => {
   const session = await getSession(ctx);
-
   let pageProps = {};
 
   if (Component.getInitialProps) {
@@ -54,7 +53,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
     pageProps.session = session;
   }
 
-  if(!session && !extraPages.includes(Component.name.toLowerCase())) {
+  if(!session && ![...extraPages, 'home'].includes(Component.name.toLowerCase())) {
     ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end();
   }

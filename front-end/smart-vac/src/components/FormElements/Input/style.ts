@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const InputContainer = styled.div`
     color: #3D405B;
+    flex: 1;
 
     input {
         padding: 0 5px;

@@ -1,22 +1,32 @@
 
+import { api } from '@/Lib/api';
 import ExternalPageLayout from '@/components/ExternalPageLayout';
 import FormRegister from '@/components/Forms/FormRegister';
-import { useSession } from 'next-auth/react';
+import { FormikHelpers } from 'formik';
+import { getSession } from 'next-auth/react';
 import Router from 'next/router';
-import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-export default function Login() {
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    console.log(status, session);
-    if (status === "authenticated") {
-      Router.push('/dashboard');
-    }
-  }, [status]);
-
-  const handleRegister = (data:object) => {
-    
+export default function Register() {
+  const handleRegister = (data: object, formik: FormikHelpers<any>) => {
+    (api.post('/usuario/cadastrar', data)).then((response) => {
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'Usuário cadastrado com sucesso, Faça login para continuar!',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      }).then(() => {
+        Router.push('/login');
+      })
+    }).catch((error) => {
+      Swal.fire({
+        title: 'Erro',
+        text: 'Erro ao cadastrar usuário',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+      formik.setSubmitting(false);
+    });
   };
 
   return (
@@ -26,4 +36,21 @@ export default function Login() {
       </ExternalPageLayout>
     </>
   );
+}
+
+export async function getServerSideProps(ctx: any) {
+  const session = await getSession(ctx);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
 }

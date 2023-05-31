@@ -1,9 +1,7 @@
 import { useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: session, status } = useSession();
-  console.log(status, session);
-    return (
+  return (
       <>
       <h1>Nosso Sistema</h1>
       <p>

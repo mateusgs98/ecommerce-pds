@@ -9,7 +9,7 @@ export const HeaderStyle = styled.div`
     justify-content: end;
     align-items: center;
 
-    a {
+    .btn {
         margin: 0 2rem;
     }
 `;

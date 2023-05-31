@@ -1,19 +1,11 @@
 
 import ExternalPageLayout from '@/components/ExternalPageLayout';
 import FormLogin from '@/components/Forms/FormLogin';
-import { signIn, useSession } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
 import Router from 'next/router';
 import { useEffect } from 'react';
 
 export default function Login() {
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    console.log(status, session);
-    if (status === "authenticated") {
-      Router.push('/dashboard');
-    }
-  }, [status]);
 
   const handleLogin = async (values: any) => {
     const res = await signIn("credentials", {
@@ -40,19 +32,19 @@ export default function Login() {
   );
 }
 
-// export async function getServerSideProps(context: any) {
-//   const session = await getSession(context);
-//   console.log(session);
-//   if (session) {
-//     return {
-//       redirect: {
-//         destination: '/dashboard',
-//         permanent: false,
-//       },
-//     };
-//   }
+export async function getServerSideProps(ctx: any) {
+  const session = await getSession(ctx);
 
-//   return {
-//     props: { session },
-//   };
-// }
+  if (session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
