@@ -1,3 +1,4 @@
+
 export default function Home() {
   return (
     <>
@@ -10,15 +11,24 @@ export default function Home() {
       <p>
         O sistema foi desenvolvido para ser utilizado por profissionais de saúde, como
         enfermeiros e médicos, e por pacientes.
-        <ul>
-          <li>
-            Os profissionais de saúde podem cadastrar vacinas, pacientes e esquemas vacinais.
-          </li>
-          <li>
-            Os pacientespodem visualizar seus esquemas vacinais e registrar vacinações.
-          </li>
-        </ul>
       </p>
+      <ul>
+        <li>
+          Os Profissionais de Saúde podem:
+          <ul>
+            <li>Cadastrar/Visualizar Vacinas</li>
+            <li>Cadastrar/Visualizar Pacientes</li>
+            <li>Realizar Atendimentos</li>
+          </ul>
+        </li>
+        <li>
+          Os Pacientes podem:
+          <ul>
+            <li>Visualizar seus esquemas vacinais</li>
+            <li>Registrar vacinações</li>
+          </ul>
+        </li>
+      </ul>
     </>
   )
 }
