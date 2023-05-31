@@ -32,7 +32,7 @@ const columnsTable = [
   { dataField: 'actions', text: 'Doses' },
 ];
 
-export default function Home() {
+export default function Dashboard() {
   const { data: session } = useSession();
   const [data, setData] = useState<TabelaVacinas[]>([]);
 

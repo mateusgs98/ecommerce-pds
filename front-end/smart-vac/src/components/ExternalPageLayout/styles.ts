@@ -14,6 +14,7 @@ export const Container = styled.div<{width?: string}>`
     max-width: ${props => props.width ? props.width : '560px'};
     margin: auto;
     padding: 20px;
+    margin-bottom: 20px;
     margin-top: -3rem;
     background: #FFFFFF;
     border: 1px solid #000000;

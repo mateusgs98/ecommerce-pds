@@ -4,6 +4,7 @@ import FormLogin from '@/components/Forms/FormLogin';
 import { getSession, signIn, useSession } from 'next-auth/react';
 import Router from 'next/router';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Login() {
 
@@ -15,7 +16,11 @@ export default function Login() {
     });
 
     if (res?.error) {
-      alert("Falha ao realizar login");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Falha ao realizar login',
+      });
       return;
     }
 
