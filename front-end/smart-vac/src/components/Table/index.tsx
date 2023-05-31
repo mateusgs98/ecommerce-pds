@@ -5,6 +5,15 @@ import { TableContainer } from "./style";
 const paginationOptions = {
     sizePerPage: 50,
     hideSizePerPage: true, 
+    hidePageListOnlyOnePage: true,
+    showTotal: true,
+    paginationTotalRenderer: (from: number, to: number, size: number) => {
+        return (
+            <span className="react-bootstrap-table-pagination-total">
+                Mostrando { from } até { to } de { size } resultados
+            </span>
+        );
+    },
   };
   
 
