@@ -1,5 +1,6 @@
 declare type User = {
-    name: string;
-    email: string;
-    amDoctor: boolean;
+    Id: number;
+    Nome: string;
+    Email: string;
+    Paciente: boolean;
 };

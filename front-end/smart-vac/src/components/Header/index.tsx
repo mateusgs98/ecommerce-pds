@@ -36,7 +36,7 @@ export default function Header() {
   }
 
   function getItemsByTypeUser(): ReactNode {
-    if (((session?.user) as User | null)?.amDoctor) {
+    if (!((session?.user) as User | null)?.Paciente) {
       return (
         <>
           <Dropdown.Item href="/atendimento"><FaStethoscope /> Atendimento</Dropdown.Item>

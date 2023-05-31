@@ -14,9 +14,9 @@ export default function FormRegister(props: FormRegisterProps) {
         Email: '',
         Senha: '',
         ConfirmarSenha: '',
-        Aniversario: '',
+        DataNascimento: '',
         terms: false,
-        Medico: false
+        Paciente: true
     };
 
     const validationSchema = Yup.object().shape({
@@ -24,9 +24,9 @@ export default function FormRegister(props: FormRegisterProps) {
         Senha: Yup.string().required('Campo obrigatório'),
         ConfirmarSenha: Yup.string().oneOf([Yup.ref('Senha'), undefined], 'As senhas devem ser iguais').required('Campo obrigatório'),
         Nome: Yup.string().required('Campo obrigatório'),
-        Aniversario: Yup.string().required('Campo obrigatório'),
+        DataNascimento: Yup.string().required('Campo obrigatório'),
         terms: Yup.boolean().oneOf([true], 'Você deve aceitar os termos para continuar').required('Campo obrigatório'),
-        Medico: Yup.boolean().required('Campo obrigatório'),
+        Paciente: Yup.boolean().required('Campo obrigatório'),
     });
 
     return (
@@ -43,15 +43,15 @@ export default function FormRegister(props: FormRegisterProps) {
                             <div className="custom-row">
                                 <Input name="Nome" label="Nome Completo" />
                                 <Input name="Email" label="E-mail" />
-                                <Input name="Aniversario" type="date" label="Data de Nascimento" />
+                                <Input name="DataNascimento" type="date" label="Data de Nascimento" />
                             </div>
                             <div className="custom-row">
-                                <Input name="Senha" type="Senha" label="Senha" />
-                                <Input name="ConfirmarSenha" type="Senha" label="Confirmar Senha" />
+                                <Input name="Senha" type="password" label="Senha" />
+                                <Input name="ConfirmarSenha" type="password" label="Confirmar Senha" />
                             </div>
                             <div className="custom-row">
                                 <Input name="terms" type="checkbox" label="Concordo com os termos" />
-                                <Input name="Medico" type="checkbox" label="Sou médico" />
+                                <Input name="Paciente" type="checkbox" label="Sou paciente" />
                             </div>
                             <div className="align-right">
                                 <Button variant="default" type="submit" disabled={isSubmitting}>

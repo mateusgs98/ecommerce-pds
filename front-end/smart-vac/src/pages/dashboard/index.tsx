@@ -3,6 +3,7 @@ import Table from "@/components/Table";
 import { CheckboxContainer, DashboardContainer } from "@/helpers/pages/dashboard/style";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
@@ -35,9 +36,38 @@ const columnsTable = [
 export default function Dashboard() {
   const { data: session } = useSession();
   const [data, setData] = useState<TabelaVacinas[]>([]);
+  const [doses, setDoses] = useState<{ vacina: string, doses: Dose[] }[]>([]);
+
+  function onClickCheckbox(event: any, vacina: string, numeroDose: number) {
+    setDoses(prevState => [
+      ...prevState.filter((dose) => dose.vacina !== vacina),
+      {
+        vacina,
+        doses: prevState.find((dose) => dose.vacina === vacina)?.doses.map((dose) => {
+          if (dose.numeroDose === numeroDose) {
+            return {
+              numeroDose,
+              tomou: event.target.checked
+            }
+          }
+          return dose;
+        }) || []
+      }
+    ]);
+  }
+
+  function onSubmitFunction() {
+    if (doses.length === 0) {
+      return;
+    }
+    const userId = (session?.user as User | null)?.Id || 0;
+    api.put('/esquema-vacinal', { ...doses, idUsuario: userId });
+  }
 
   useEffect(() => {
-    fetchData();
+    if ((session?.user as User | null)?.Paciente) {
+      fetchData();
+    }
   }, []);
 
   async function fetchData() {
@@ -112,6 +142,12 @@ export default function Dashboard() {
         ]
       }
     ] as Vacina[];
+
+    setDoses(data.map((register: Vacina) => ({
+      vacina: register.vacina,
+      doses: register.doses
+    })));
+
     setData(data.map((register: Vacina) => ({
       ...register,
       doencasEvitadas: (<div dangerouslySetInnerHTML={{ __html: register.doencasEvitadas.join('<br />') }} />),
@@ -120,7 +156,7 @@ export default function Dashboard() {
           {register.doses.map((dose: Dose) => (
             <div className='custom-checkbox'>
               <label htmlFor={dose.numeroDose.toString()}>{dose.numeroDose}ª</label>
-              <input type="checkbox" id={dose.numeroDose.toString()} checked={dose.tomou} />
+              <input type="checkbox" id={dose.numeroDose.toString()} defaultChecked={dose.tomou} onClick={(e) => onClickCheckbox(e, register.vacina, dose.numeroDose)} />
             </div>))}
         </CheckboxContainer>
       )
@@ -130,14 +166,32 @@ export default function Dashboard() {
   return (
     <DashboardContainer>
       <div>
-        <h1>Olá, {session?.user?.name}</h1>
-        <p>
-          Aqui você pode monitorar as vacinas recomendadas para você e marcar as doses já tomadas.
-        </p>
+        <h1>Olá, {(session?.user as User | null)?.Nome}</h1>
+        {(session?.user as User | null)?.Paciente ? (
+          <>
+            <p>
+              Aqui você pode monitorar as vacinas recomendadas para você e marcar as doses já tomadas.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              Seja bem vindo ao nosso sistema.
+              As ações disponíveis para você estão no menu.
+            </p>
+          </>
+        )}
       </div>
-      <div>
-        <Table keyField='vacina' data={data} columns={columnsTable} />
-      </div>
+      {(session?.user as User | null)?.Paciente && (
+        <>
+          <div>
+            <Table keyField='vacina' data={data} columns={columnsTable} />
+          </div>
+          <div>
+            <Button variant="default" onClick={() => onSubmitFunction()}>Salvar</Button>
+          </div>
+        </>
+      )}
 
     </DashboardContainer>
   )

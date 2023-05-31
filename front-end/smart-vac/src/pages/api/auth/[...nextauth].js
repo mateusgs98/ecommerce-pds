@@ -10,7 +10,7 @@ export default NextAuth({
       async authorize(credentials) {
         try {
           // const user = await api.post('/usuario/login', credentials)
-          const user = { id: "1", name: "J Smith", email: "jsmith@example.com", amDoctor: true }
+          const user = { Id: "1", Nome: "J Smith", Email: "jsmith@example.com", Paciente: false, DataNascimento: '2002-01-01' }
           if (user) {
             return Promise.resolve(user);
           }
@@ -22,13 +22,13 @@ export default NextAuth({
     })
   ],
   callbacks: {
-    async jwt({ token, user }) { 
-      if(user) {
+    async jwt({ token, user }) {
+      if (user) {
         token.user = user;
       }
       return token
     },
-    async session({ session, token}) {
+    async session({ session, token }) {
       session.user = token.user;
       return session
     }
