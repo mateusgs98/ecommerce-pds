@@ -1,0 +1,46 @@
+* {
+    color: #3D405B;
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    color: #81B29A;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    color: #81B29A;
+    text-decoration: none;
+    filter: brightness(1.2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 2rem;
+}
+
+.btn-default {
+    background-color: #E07A5F !important;
+    color: #F4F1DE !important;
+
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus {
+    background-color: #E07A5F !important;
+    filter: brightness(1.2) !important;
+    color: #F4F1DE !important;
+    border: none;
+}
+
+.btn-default:disabled {
+    background-color: #E07A5F !important;
+    opacity: 0.5 !important;
+    color: #F4F1DE !important;
+    border: none !important;
+}
