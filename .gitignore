@@ -1,0 +1,5 @@
+Backend/Api/bin
+Backend/Api/obj
+Backend/Dominio/bin
+Backend/Dominio/obj
+Backend/Api/appsettings.Development.json
