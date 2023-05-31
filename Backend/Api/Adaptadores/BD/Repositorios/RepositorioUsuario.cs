@@ -26,15 +26,27 @@ namespace Api.Adaptadores.BD.Repositorios
                 Id = usuario.Id,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
-                Senha = usuario.Senha
+                Senha = usuario.Senha,
+                Paciente = usuario.Paciente,
+                DataNascimento = usuario.DataNascimento
             };
         }
 
-        public async Task<int> ObterUsuario(string email, string senha)
+        public async Task<DTOs.Usuario> ObterUsuario(string email, string senha)
         {
             var usuario = await _contextoBd.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
+            if (usuario == null)
+                return null;
 
-            return usuario?.Id ?? 0;
+            return new DTOs.Usuario
+            {
+                Id = usuario.Id,
+                Nome = usuario.Nome,
+                Email = usuario.Email,
+                Senha = usuario.Senha,
+                Paciente = usuario.Paciente,
+                DataNascimento = usuario.DataNascimento
+            };
         }
 
         public async Task<DTOs.Usuario> CadastrarUsuario(DTOs.Usuario usuario)
@@ -43,7 +55,9 @@ namespace Api.Adaptadores.BD.Repositorios
             {
                 Nome = usuario.Nome,
                 Email = usuario.Email,
-                Senha = usuario.Senha
+                Senha = usuario.Senha,
+                Paciente = usuario.Paciente,
+                DataNascimento = usuario.DataNascimento
             };
 
             await _contextoBd.Usuarios.AddAsync(entidadeUsuario);
