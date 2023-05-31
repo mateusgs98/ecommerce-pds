@@ -14,7 +14,7 @@ export default NextAuth({
             Senha: credentials.password
           }
           // const user = await api.post('/usuario/login', body)
-          const user = { Id: "1", Nome: "J Smith", Email: "jsmith@example.com", Paciente: false, DataNascimento: '2002-01-01' }
+          const user = { Id: "1", Nome: "J Smith", Email: "jsmith@example.com", Paciente: true, DataNascimento: '2002-01-01' }
           if (user) {
             return Promise.resolve(user);
           }

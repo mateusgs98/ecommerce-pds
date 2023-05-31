@@ -1,13 +1,24 @@
-import { useSession } from "next-auth/react";
-
 export default function Home() {
   return (
-      <>
+    <>
       <h1>Nosso Sistema</h1>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a fermentum nulla. Sed sed eros a mi porttitor hendrerit sed a leo. Suspendisse eleifend purus ac rutrum rhoncus. Integer tincidunt libero vitae aliquet viverra. Morbi et neque nulla. Cras ullamcorper, libero congue iaculis luctus, lectus tortor commodo odio, et eleifend ante magna id mi. Maecenas lacinia fringilla orci vitae finibus. Phasellus tincidunt nec lectus quis volutpat.
+        O sistema SmartVac é um sistema de gerenciamento de vacinas, que tem como objetivo
+        gerenciar o estoque de vacinas de uma unidade de saúde, além de sugerir esquemas
+        vacinais de acordo com as doenças e o paciente.
       </p>
-      </>
-    )
-  }
-  
+      <p>
+        O sistema foi desenvolvido para ser utilizado por profissionais de saúde, como
+        enfermeiros e médicos, e por pacientes.
+        <ul>
+          <li>
+            Os profissionais de saúde podem cadastrar vacinas, pacientes e esquemas vacinais.
+          </li>
+          <li>
+            Os pacientespodem visualizar seus esquemas vacinais e registrar vacinações.
+          </li>
+        </ul>
+      </p>
+    </>
+  )
+}

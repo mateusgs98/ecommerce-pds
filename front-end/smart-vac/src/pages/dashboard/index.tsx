@@ -184,11 +184,11 @@ export default function Dashboard() {
       </div>
       {(session?.user as User | null)?.Paciente && (
         <>
-          <div>
+          <div className="table">
             <Table keyField='vacina' data={data} columns={columnsTable} />
-          </div>
-          <div>
-            <Button variant="default" onClick={() => onSubmitFunction()}>Salvar</Button>
+            <div className="align-right">
+              <Button variant="default" onClick={() => onSubmitFunction()}>Salvar</Button>
+            </div>
           </div>
         </>
       )}

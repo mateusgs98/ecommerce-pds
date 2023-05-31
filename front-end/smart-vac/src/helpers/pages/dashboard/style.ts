@@ -4,6 +4,12 @@ export const DashboardContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 80px;
+
+    .align-right {
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 !important;
+    }
 `
 
 export const CheckboxContainer = styled.div`
