@@ -18,11 +18,11 @@ namespace Api.Adaptadores.Controllers
         [HttpPost("login")]
         public async Task<IResult> Login([FromBody]Usuario usuario)
         {
-            var idUsuarioEncontrado = await _repositorioUsuario.ObterUsuario(usuario.Email, usuario.Senha);
-            if (idUsuarioEncontrado == 0)
+            var usuarioEncontrado = await _repositorioUsuario.ObterUsuario(usuario.Email, usuario.Senha);
+            if (usuarioEncontrado == null)
                 return Results.Unauthorized();
 
-            return Results.Ok(idUsuarioEncontrado);
+            return Results.Ok(usuarioEncontrado);
         }
 
         [HttpGet("obter/{id}")]
