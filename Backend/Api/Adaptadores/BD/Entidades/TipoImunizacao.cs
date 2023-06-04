@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Api.Adaptadores.BD.Entidades
 {
-    [Table("TipoUmunizacao", Schema = "dbo")]
+    [Table("TipoImunizacao", Schema = "dbo")]
     public class TipoImunizacao
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
