@@ -36,12 +36,12 @@ export default function Header() {
   }
 
   function getItemsByTypeUser(): ReactNode {
-    if (!((session?.user) as User | null)?.Paciente) {
+    if (((session?.user) as User | null)?.Paciente) {
       return (
         <>
           <Dropdown.Item href="/atendimento"><FaStethoscope /> Atendimento</Dropdown.Item>
-          <Dropdown.Item href="/vacinas"><FaSyringe /> Listagem de Vacinas</Dropdown.Item>
-          <Dropdown.Item href="/doencas"><FaVirus /> Listagem de Doenças</Dropdown.Item>
+          <Dropdown.Item href="/vaccine"><FaSyringe /> Listagem de Vacinas</Dropdown.Item>
+          <Dropdown.Item href="/disease"><FaVirus /> Listagem de Doenças</Dropdown.Item>
         </>
       );
     }
