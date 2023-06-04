@@ -10,5 +10,7 @@ namespace Api.Adaptadores.BD
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Atendimento> Atendimentos { get; set; }
+        public DbSet<AtendimentoVacina> AtendimentosVacinas { get; set; }
     }
 }
