@@ -33,7 +33,7 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(VacinaCadastrada);
         }
 
-        [HttpGet("listar/")]
+        [HttpGet("listar")]
         public async Task<IResult<Vacina>> ObterVacinas()
         {
             var vacinas = await _repositorioVacina.ObterVacinas();
