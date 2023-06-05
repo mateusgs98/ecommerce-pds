@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Atendimento_Vacinas](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[AtendimentoId] [int] NOT NULL,
 	[VacinaId] [int] NOT NULL,
  CONSTRAINT [PK_Atendimento_Vacinas] PRIMARY KEY CLUSTERED 
@@ -23,9 +23,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Atendimentos](
-	[Id] [int] NOT NULL,
-	[ResponsavelId] [int] NOT NULL,
-	[PacienteId] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UsuarioId] [int] NOT NULL,
 	[Data] [date] NOT NULL,
 	[LocalAtendimento] [varchar](50) NOT NULL,
 	[CodigoLocalAtendimento] [int] NOT NULL,
@@ -296,8 +295,8 @@ REFERENCES [dbo].[Vacinas] ([Id])
 GO
 ALTER TABLE [dbo].[Atendimento_Vacinas] CHECK CONSTRAINT [FK_Atendimento_Vacinas_Vacinas]
 GO
-ALTER TABLE [dbo].[Atendimentos]  WITH CHECK ADD  CONSTRAINT [FK_Atendimentos_Paciente_ContraIndicacoes] FOREIGN KEY([PacienteId])
-REFERENCES [dbo].[Paciente_ContraIndicacoes] ([Id])
+ALTER TABLE [dbo].[Atendimentos]  WITH CHECK ADD  CONSTRAINT [FK_Atendimentos_Usuario] FOREIGN KEY([UsuarioId])
+REFERENCES [dbo].[Usuario] ([Id])
 GO
 ALTER TABLE [dbo].[Atendimentos] CHECK CONSTRAINT [FK_Atendimentos_Paciente_ContraIndicacoes]
 GO
