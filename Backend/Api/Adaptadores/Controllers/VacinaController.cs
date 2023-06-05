@@ -34,11 +34,11 @@ namespace Api.Adaptadores.Controllers
         }
 
         [HttpGet("listar/")]
-        public async Task<IEnumerable<Vacina>> ObterVacinas()
+        public async Task<IResult<Vacina>> ObterVacinas()
         {
             var vacinas = await _repositorioVacina.ObterVacinas();
 
-            return (IEnumerable<Vacina>)Results.Ok(vacinas);
+            return Results.Ok(vacinas);
 
         }
 
