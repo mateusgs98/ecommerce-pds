@@ -15,6 +15,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ContextoBd>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioAtendimento, RepositorioAtendimento>();
+builder.Services.AddScoped<IRepositorioPatogeno, RepositorioPatogeno>();
+builder.Services.AddScoped<IRepositorioSintoma, RepositorioSintoma>();
+builder.Services.AddScoped<IRepositorioTipoImunizacao, RepositorioTipoImunizacao>();
+builder.Services.AddScoped<IRepositorioDoenca, RepositorioDoenca>();
+builder.Services.AddScoped<IRepositorioVacina, RepositorioVacina>();
+
 
 builder.Services.AddCors(options =>
 {
