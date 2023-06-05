@@ -26,14 +26,7 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(tipoImunizacao);
         }
 
-        [HttpGet("listar/")]
-        public async Task<IEnumerable<TipoImunizacao>> ObterTiposImunizacao()
-        {
-            var tiposImunizacao = await _repositorioTipoImunizacao.ObterTiposImunizacao();
-
-            return (IEnumerable<TipoImunizacao>)Results.Ok(tiposImunizacao);
-
-        }
+       
 
     }
 }
