@@ -7,6 +7,6 @@ namespace Dominio.Portas.Entrada
     {
         Task<TipoImunizacao> ObterTipoImunizacao(int id);
 
-        Task<IEnumerable<TipoImunizacao>> ObterTiposImunizacao()
+        Task<List<TipoImunizacao>> ObterTiposImunizacao();
     }
 }

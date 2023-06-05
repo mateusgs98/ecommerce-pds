@@ -34,11 +34,11 @@ namespace Api.Adaptadores.Controllers
         }
 
         [HttpGet("lista")]
-        public async Task<IEnumerable<Doenca>> ObterDoencas()
+        public async Task<IResult> ObterDoencas()
         {
             var doencas = await _repositorioDoenca.ObterDoencas();
 
-            return (IEnumerable<Doenca>)Results.Ok(doencas);
+            return Results.Ok(doencas);
 
         }
       

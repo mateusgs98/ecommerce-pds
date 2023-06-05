@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Api.Adaptadores.BD.Entidades
 {
-    [Table("Doenca", Schema = "dbo")]
+    [Table("Doencas", Schema = "dbo")]
     public class Doenca
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
