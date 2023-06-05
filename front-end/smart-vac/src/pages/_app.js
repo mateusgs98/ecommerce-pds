@@ -6,6 +6,9 @@ import { Footer } from '../components/Footer/style';
 import { Content } from '../components/Content/style';
 import { SessionProvider } from "next-auth/react"
 import { getSession } from 'next-auth/react';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { SSRProvider } from "react-bootstrap";
 
 const extraPages = ['login', 'register'];
 
@@ -35,7 +38,11 @@ function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider session={pageProps.session}>
-        {getPage()}
+        <SSRProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {getPage()}
+          </LocalizationProvider>
+        </SSRProvider>
       </SessionProvider>
     </>
   );

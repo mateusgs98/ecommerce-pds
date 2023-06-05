@@ -11,6 +11,7 @@ namespace Api.Adaptadores.BD
 
         public DbSet<Usuario> Usuarios { get; set; }
 
+
         public DbSet<TipoImunizacao> TiposImunizacao { get; set; }
 
         public DbSet<Sintoma> Sintomas { get; set; }
@@ -18,5 +19,9 @@ namespace Api.Adaptadores.BD
         public DbSet<Doenca> Doencas { get; set; }
 
         public DbSet<Vacina> Vacinas { get; set; }
+
+        public DbSet<Atendimento> Atendimentos { get; set; }
+        public DbSet<AtendimentoVacina> AtendimentosVacinas { get; set; }
+
     }
 }

@@ -20,27 +20,37 @@ h3,
 h4,
 h5,
 h6 {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: #3D405B;
+}
+
+.btn-primary:is(:hover, :focus, :active) {
+  color: #FFF;
+  background-color: #3D405B;
+  filter: brightness(0.9);
 }
 
 .btn-default {
-    background-color: #E07A5F !important;
-    color: #F4F1DE !important;
-
+  background-color: #E07A5F !important;
+  color: #F4F1DE !important;
 }
 
 .btn-default:hover,
 .btn-default:active,
 .btn-default:focus {
-    background-color: #E07A5F !important;
-    filter: brightness(1.2) !important;
-    color: #F4F1DE !important;
-    border: none;
+  background-color: #E07A5F !important;
+  filter: brightness(1.2) !important;
+  color: #F4F1DE !important;
+  border: none;
 }
 
 .btn-default:disabled {
-    background-color: #E07A5F !important;
-    opacity: 0.5 !important;
-    color: #F4F1DE !important;
-    border: none !important;
+  background-color: #E07A5F !important;
+  opacity: 0.5 !important;
+  color: #F4F1DE !important;
+  border: none !important;
 }

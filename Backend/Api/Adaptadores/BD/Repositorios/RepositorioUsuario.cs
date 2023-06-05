@@ -56,7 +56,7 @@ namespace Api.Adaptadores.BD.Repositorios
                 Nome = usuario.Nome,
                 Email = usuario.Email,
                 Senha = usuario.Senha,
-                Paciente = usuario.Paciente,
+                Paciente = usuario.Paciente.Value,
                 DataNascimento = usuario.DataNascimento
             };
 
