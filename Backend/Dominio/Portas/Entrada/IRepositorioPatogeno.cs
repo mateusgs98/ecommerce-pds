@@ -8,6 +8,6 @@ namespace Dominio.Portas.Entrada
 
         Task<Patogeno> ObterPatogeno(int id);
 
-        Task<IEnumerable<Patogeno>> ObterPatogenos();
+        Task<List<Patogeno>> ObterPatogenos();
     }
 }
