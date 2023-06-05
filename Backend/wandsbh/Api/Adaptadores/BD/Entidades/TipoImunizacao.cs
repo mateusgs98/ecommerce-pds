@@ -3,16 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Api.Adaptadores.BD.Entidades
 {
-    [Table("Doenca", Schema = "dbo")]
-    public class Doenca
+    [Table("TipoImunizacao", Schema = "dbo")]
+    public class TipoImunizacao
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public string? Nome { get; set; }
-        public  DateTime? DataIdentificacao { get; set; }
-        public  string? Descricao { get; set; }
-        public  int PatogenoId { get; set; }
-    }
 
+        [Required]
+        public string Descricao { get; set; }
+    }
 }
