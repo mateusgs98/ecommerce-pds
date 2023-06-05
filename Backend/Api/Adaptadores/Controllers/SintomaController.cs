@@ -24,16 +24,7 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(Sintoma);
         }
 
-        [HttpGet("listar/")]
-        public async Task<IEnumerable<Sintoma>> ObterSintomas()
-        {
-            var Sintomas = await _repositorioSintoma.ObterSintomas();
-
-            return (IEnumerable<Sintoma>)Results.Ok(Sintomas);
-
-        }
-
-
+      
 
     }
 }
