@@ -8,6 +8,6 @@ namespace Dominio.Portas.Entrada
 
         Task<Sintoma> CadastrarSintoma(Sintoma sintoma);
 
-        Task<IEnumerable<Sintoma>> ObterSintomas();
+        Task<List<Sintoma>> ObterSintomas();
     }
 }
