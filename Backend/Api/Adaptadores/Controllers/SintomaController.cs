@@ -24,12 +24,13 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(Sintoma);
         }
         
-         [HttpGet("listar")]
-        public async Task<IResult> ObterSintoma()
+       [HttpGet("listar")]
+        public async Task<IEnumerable<Sintoma>> ObterSintomas()
         {
-            var sintomas = await _repositorioSintoma.ObterSintoma();
+            var Sintomas = await _repositorioSintoma.ObterSintomas();
 
-            return Results.Ok(sintomas);
+            return (IEnumerable<Sintoma>)Results.Ok(Sintomas);
+
         }
 
       
