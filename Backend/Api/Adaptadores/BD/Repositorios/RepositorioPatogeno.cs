@@ -1,5 +1,7 @@
 ﻿using Dominio.Portas.Entrada;
 using DTOs = Dominio.DTOs;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Adaptadores.BD.Repositorios
 {
@@ -38,11 +40,15 @@ namespace Api.Adaptadores.BD.Repositorios
             return patogeno;
         }
 
-        public async Task<IEnumerable<DTOs.Patogeno>> ObterPatogenos()
+        public async Task<List<DTOs.Patogeno>> ObterPatogenos()
         {
-            var patogenos = await _contextoBd.Patogenos.FindAsync();
+            var patogenos = await _contextoBd.Patogenos.ToListAsync();
             
-            return (IEnumerable<DTOs.Patogeno>)patogenos;
+            return patogenos.Select(p => new DTOs.Patogeno
+            {
+                Id = p.Id,
+                Nome = p.Nome
+            }).ToList();
 
         }
 

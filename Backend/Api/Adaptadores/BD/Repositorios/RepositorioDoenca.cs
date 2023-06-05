@@ -1,5 +1,7 @@
 ﻿using Dominio.Portas.Entrada;
 using DTOs = Dominio.DTOs;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Adaptadores.BD.Repositorios
 {
@@ -44,12 +46,18 @@ namespace Api.Adaptadores.BD.Repositorios
             return doenca;
         }
 
-        public async Task<IEnumerable<DTOs.Doenca>> ObterDoencas()
+        public async Task<List<DTOs.Doenca>> ObterDoencas()
         {
-            var doencas = await _contextoBd.Doencas.FindAsync();
+            var doencas = await _contextoBd.Doencas.ToListAsync();
 
-            return (IEnumerable<DTOs.Doenca>)doencas;
-
+            return doencas.Select(d => new DTOs.Doenca
+            {
+                DataIdentificacao = d.DataIdentificacao,
+                Descricao = d.Descricao,
+                Id = d.Id,
+                Nome = d.Nome,
+                Patogeno = d.PatogenoId
+            }).ToList();
         }
 
     }

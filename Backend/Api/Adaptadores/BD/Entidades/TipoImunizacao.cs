@@ -10,7 +10,6 @@ namespace Api.Adaptadores.BD.Entidades
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string Descricao { get; set; }
+        public string Nome { get; set; }
     }
 }

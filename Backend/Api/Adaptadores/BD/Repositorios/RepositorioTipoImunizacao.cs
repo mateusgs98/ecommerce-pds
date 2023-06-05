@@ -22,16 +22,20 @@ namespace Api.Adaptadores.BD.Repositorios
             return new DTOs.TipoImunizacao
             {
                 Id = tipoImunizacao.Id,
-                Nome = tipoImunizacao.Descricao
+                Nome = tipoImunizacao.Nome
                 
             };
         }
 
-        public async Task<IEnumerable<DTOs.TipoImunizacao>> ObterTiposImunizacao()
+        public async Task<List<DTOs.TipoImunizacao>> ObterTiposImunizacao()
         {
-            var tiposImunizacao = await _contextoBd.TiposImunizacao.FindAsync();
+            var tiposImunizacao = await _contextoBd.TiposImunizacao.ToListAsync();
 
-            return (IEnumerable<DTOs.TipoImunizacao>)tiposImunizacao;
+            return tiposImunizacao.Select(t => new DTOs.TipoImunizacao
+            {
+                Id = t.Id,
+                Nome = t.Nome
+            }).ToList();
             
         }
 

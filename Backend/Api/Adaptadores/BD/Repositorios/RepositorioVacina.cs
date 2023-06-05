@@ -1,5 +1,7 @@
 ﻿using Dominio.Portas.Entrada;
 using DTOs = Dominio.DTOs;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Adaptadores.BD.Repositorios
 {
@@ -14,7 +16,6 @@ namespace Api.Adaptadores.BD.Repositorios
         public async Task<DTOs.Vacina> ObterVacina(int id)
         {
             var vacina = await _contextoBd.Vacinas.FindAsync(id);
-            var doenca = await _contextoBd.Doencas.FindAsync(id);
 
             return new DTOs.Vacina
             {
@@ -53,11 +54,22 @@ namespace Api.Adaptadores.BD.Repositorios
             return vacina;
         }
 
-        public async Task<IEnumerable<DTOs.Vacina>> ObterVacinas()
+        public async Task<List<DTOs.Vacina>> ObterVacinas()
         {
-            var vacinas = await _contextoBd.Vacinas.FindAsync();
+            var vacinas = await _contextoBd.Vacinas.ToListAsync();
 
-            return (IEnumerable<DTOs.Vacina>)vacinas;
+            return vacinas.Select(v => new DTOs.Vacina
+            {
+                DataAprovacao = v.DataAprovacao,
+                DataFabricacao = v.DataFabricacao,
+                Doses = v.DosesImunizacao,
+                EficaciaComprovada = v.EficaciaComprovada,
+                Fabricante = v.FabricanteId,
+                Id = v.Id,
+                Nome = v.Nome,
+                Patogeno = v.PatogenoId,
+                PeriodoEntreDoses = v.PeriodoEntreDoses
+            }).ToList();
 
         }
 

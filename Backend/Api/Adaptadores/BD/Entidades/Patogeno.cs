@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Api.Adaptadores.BD.Entidades
 {
    
-        [Table("Patogeno", Schema = "dbo")]
+        [Table("Patogenos", Schema = "dbo")]
         public class Patogeno
         {
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
