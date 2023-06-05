@@ -13,7 +13,7 @@ namespace Dominio.Portas.Entrada
 
         Task<Vacina> CadastrarVacina(Vacina vacina);
         
-        Task<List<Vacina>> ObterVacinas();
+         Task<IEnumerable<Vacina>> ObterVacinas();
         
     }
 }
