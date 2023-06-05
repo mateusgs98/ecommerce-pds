@@ -26,7 +26,7 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(tipoImunizacao);
         }
         
-         [HttpGet("lsitar/")]
+         [HttpGet("lsitar")]
         public async Task<IResult> ObterTipoImunizacao()
         {
             var tiposImunizacao = await _repositorioTipoImunizacao.ObterTipoImunizacao();
