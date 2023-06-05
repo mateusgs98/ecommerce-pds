@@ -12,7 +12,8 @@ namespace Dominio.Portas.Entrada
         Task<Vacina> ObterVacina(int id);
 
         Task<Vacina> CadastrarVacina(Vacina vacina);
-
-        Task<IEnumerable<Vacina>> ObterVacinas();
+        
+        Task<List<Vacina>> ObterVacinas();
+        
     }
 }
