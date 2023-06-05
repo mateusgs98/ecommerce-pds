@@ -26,12 +26,13 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(tipoImunizacao);
         }
         
-         [HttpGet("lsitar")]
-        public async Task<IResult> ObterTipoImunizacao()
+        [HttpGet("listar")]
+        public async Task<IEnumerable<TipoImunizacao>> ObterTiposImunizacao()
         {
-            var tiposImunizacao = await _repositorioTipoImunizacao.ObterTipoImunizacao();
+            var tiposImunizacao = await _repositorioTipoImunizacao.ObterTiposImunizacao();
 
-            return Results.Ok(tiposImunizacao);
+            return (IEnumerable<TipoImunizacao>)Results.Ok(tiposImunizacao);
+
         }
 
        
