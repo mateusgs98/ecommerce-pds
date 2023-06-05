@@ -16,12 +16,20 @@ namespace Api.Adaptadores.Controllers
         }
 
 
-        [HttpGet("obter/")]
+        [HttpGet("obter/{id}")]
         public async Task<IResult> ObterSintoma([FromRoute] int id)
         {
             var Sintoma = await _repositorioSintoma.ObterSintoma(id);
 
             return Results.Ok(Sintoma);
+        }
+        
+         [HttpGet("listar/")]
+        public async Task<IResult> ObterSintoma()
+        {
+            var sintomas = await _repositorioSintoma.ObterSintoma();
+
+            return Results.Ok(sintomas);
         }
 
       
