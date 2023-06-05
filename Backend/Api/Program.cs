@@ -2,6 +2,7 @@ using Api.Adaptadores.BD;
 using Microsoft.EntityFrameworkCore;
 using Dominio.Portas.Entrada;
 using Api.Adaptadores.BD.Repositorios;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,20 @@ builder.Services.AddDbContext<ContextoBd>(options => options.UseSqlServer(builde
 builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioAtendimento, RepositorioAtendimento>();
 
+builder.Services.AddCors(options =>
+{
+    var policeBuilder = new CorsPolicyBuilder();
+    var SmarVactPolice = policeBuilder
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .Build();
+
+    options.AddPolicy(name: "SmartVacPolice", SmarVactPolice);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 // app.UseHttpsRedirection();
+
+app.UseCors("SmartVacPolice");
 
 app.UseAuthorization();
 
