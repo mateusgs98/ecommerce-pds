@@ -18,7 +18,7 @@ namespace Api.Adaptadores.Controllers
         }
 
 
-        [HttpGet("obter/")]
+        [HttpGet("obter/{id}")]
         public async Task<IResult> ObterPatogeno([FromRoute] int id)
         {
             var patogeno = await _repositorioPatogeno.ObterPatogeno(id);
@@ -26,7 +26,13 @@ namespace Api.Adaptadores.Controllers
             return Results.Ok(patogeno);
         }
 
-      
+       [HttpGet("listar/")]
+        public async Task<IResult> ObterPatogeno()
+        {
+            var patogenos = await _repositorioPatogeno.ObterPatogeno();
+
+            return Results.Ok(patogenos);
+        }
 
     }
 }
