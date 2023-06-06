@@ -9,7 +9,8 @@ namespace Api.Adaptadores.BD.Repositorios
 {
     public class RepositorioTipoImunizacao : IRepositorioTipoImunizacao
     {
-         private readonly ContextoBd _contextoBd;
+        private readonly ContextoBd _contextoBd;
+        
         public RepositorioTipoImunizacao(ContextoBd contextoBd)
         {
             _contextoBd = contextoBd ?? throw new ArgumentNullException(nameof(contextoBd));
