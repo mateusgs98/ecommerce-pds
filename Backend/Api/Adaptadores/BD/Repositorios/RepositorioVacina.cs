@@ -26,8 +26,8 @@ namespace Api.Adaptadores.BD.Repositorios
                 DataAprovacao= vacina.DataAprovacao,
                 DataFabricacao= vacina.DataFabricacao,
                 PeriodoEntreDoses = vacina.PeriodoEntreDoses,
-                Patogeno = vacina.PatogenoId
-
+                Patogeno = vacina.PatogenoId,
+                EficaciaComprovada = vacina.EficaciaComprovada
             };
         }
 
@@ -41,9 +41,8 @@ namespace Api.Adaptadores.BD.Repositorios
                 DataAprovacao = vacina.DataAprovacao,
                 DataFabricacao = vacina.DataFabricacao,
                 PeriodoEntreDoses = vacina.PeriodoEntreDoses,
-                PatogenoId = vacina.Patogeno
-
-
+                PatogenoId = vacina.Patogeno,
+                EficaciaComprovada = vacina.EficaciaComprovada
             };
 
             await _contextoBd.Vacinas.AddAsync(entidadeVacina);

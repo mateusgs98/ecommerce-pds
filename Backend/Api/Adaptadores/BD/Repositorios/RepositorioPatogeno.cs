@@ -25,21 +25,6 @@ namespace Api.Adaptadores.BD.Repositorios
             };
         }
 
-        public async Task<DTOs.Patogeno> CadastrarPatogeno(DTOs.Patogeno patogeno)
-        {
-            var entidadePatogeno = new Entidades.Patogeno
-            {
-                Nome = patogeno.Nome
-            };
-
-            await _contextoBd.Patogenos.AddAsync(entidadePatogeno);
-            await _contextoBd.SaveChangesAsync();
-
-            patogeno.Id = entidadePatogeno.Id;
-
-            return patogeno;
-        }
-
         public async Task<List<DTOs.Patogeno>> ObterPatogenos()
         {
             var patogenos = await _contextoBd.Patogenos.ToListAsync();

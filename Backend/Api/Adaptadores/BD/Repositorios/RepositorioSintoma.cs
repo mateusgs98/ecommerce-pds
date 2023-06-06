@@ -1,5 +1,7 @@
 ﻿using Dominio.Portas.Entrada;
 using DTOs = Dominio.DTOs;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Adaptadores.BD.Repositorios
 {
@@ -23,26 +25,15 @@ namespace Api.Adaptadores.BD.Repositorios
             };
         }
 
-        public async Task<DTOs.Sintoma> CadastrarSintoma(DTOs.Sintoma sintoma)
+        public async Task<List<DTOs.Sintoma>> ObterSintomas()
         {
-            var entidadeSintoma = new Entidades.Sintoma
+            var sintomas = await _contextoBd.Sintomas.ToListAsync();
+
+            return sintomas.Select(s => new DTOs.Sintoma
             {
-                Descricao = sintoma.Descricao
-            };
-
-            await _contextoBd.Sintomas.AddAsync(entidadeSintoma);
-            await _contextoBd.SaveChangesAsync();
-
-            sintoma.Id = entidadeSintoma.Id;
-
-            return sintoma;
-        }
-
-        public async Task<IEnumerable<DTOs.Sintoma>> ObterSintomas()
-        {
-            var sintomas = await _contextoBd.Sintomas.FindAsync();
-
-            return (IEnumerable<DTOs.Sintoma>)sintomas;
+                Id = s.Id,
+                Descricao = s.Descricao
+            }).ToList();
 
         }
 
