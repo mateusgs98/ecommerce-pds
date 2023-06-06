@@ -3,3 +3,5 @@ Backend/Api/obj
 Backend/Dominio/bin
 Backend/Dominio/obj
 Backend/Api/appsettings.Development.json
+Backend/Api.Tests/bin
+Backend/Api.Tests/obj
